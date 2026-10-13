@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fault Code Study Cards — Offline Prototype</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main id="app">
+  <header>
+    <h1>Fault Code Study Cards</h1>
+    <p class="notice" role="note"><strong>Experimental concept prototype — idea exploration only.</strong>
+      Study aid, not diagnostic authority. All codes/vehicles are fictional practice data. Never use on a real vehicle.</p>
+  </header>
+
+  <section class="toolbar" aria-label="Study controls">
+    <label>System
+      <select id="filter" aria-label="Filter by system"></select>
+    </label>
+    <button id="btn-shuffle" title="Shortcut: S">Shuffle</button>
+    <button id="btn-reset">Reset score</button>
+    <div id="score" role="status" aria-live="polite">Known 0 · Unknown 0 · 0 marked · 0%</div>
+  </section>
+
+  <section class="stage" aria-label="Flashcard">
+    <div id="card" class="card" tabindex="0" role="button" aria-label="Flashcard. Press F to flip.">
+      <div class="face front">
+        <div id="front-code" class="code"></div>
+        <div id="front-vehicle" class="vehicle"></div>
+        <div id="front-system" class="system"></div>
+        <p id="front-symptom" class="symptom"></p>
+        <p class="hint">Click or press F to flip</p>
+      </div>
+      <div class="face back">
+        <div id="back-code" class="code"></div>
+        <p id="back-cause"></p>
+        <p id="back-test"></p>
+        <p class="hint">Click or press F to flip back</p>
+      </div>
+    </div>
+    <div class="nav">
+      <button id="btn-prev" title="Shortcut: Left arrow">← Prev</button>
+      <span id="counter" aria-live="polite">1 / 8</span>
+      <button id="btn-next" title="Shortcut: Right arrow">Next →</button>
+    </div>
+  </section>
+
+  <section class="marks" aria-label="Mark knowledge">
+    <button id="btn-flip" title="Shortcut: F">Flip (F)</button>
+    <button id="btn-known" title="Shortcut: K">Mark known (K)</button>
+    <button id="btn-unknown" title="Shortcut: U">Mark unknown (U)</button>
+    <div id="status" role="status" aria-live="polite">Unmarked</div>
+  </section>
+
+  <footer>
+    <h2>Keyboard shortcuts</h2>
+    <ul>
+      <li><kbd>F</kbd> flip · <kbd>←</kbd>/<kbd>→</kbd> prev/next · <kbd>S</kbd> shuffle · <kbd>K</kbd> known · <kbd>U</kbd> unknown</li>
+      <li>Tab reaches every button; Enter/Space activates the focused card.</li>
+    </ul>
+    <p class="limits">Honest limits: fictional deck for study drills only — not a repair manual, not OBD-II truth, no persistence (marks reset on reload), fully offline (no network, no storage).</p>
+  </footer>
+</main>
+<script src="./app.js"></script>
+</body>
+</html>
